@@ -3,7 +3,7 @@
 
 <% @books.each do |book| %>
 
-  <p>T</p>
+  <p>Title</p>
   <span><%= link_to book.title, book_path(book.id) %></span>
 
 <% end %>
@@ -11,6 +11,14 @@
 <h2>New book</h2>
 <!-- form_with部分 -->
 <%= form_with model: @book do |f| %>
+
+<!-- メッセージ表示 -->
+<div class="flash-notifications">
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: key) %>
+  <% end %>
+</div>
+
   <h4>Title</h4>
   <%= f.text_field :title %>
 
