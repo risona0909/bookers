@@ -8,9 +8,9 @@ class BooksController < ApplicationController
   end
 
   def create
-    if book = Book.new(book_params)
-      book.save
-      redirect_to book_path(book.id), notice: 'Book was successfully created' #投稿成功時フラッシュメッセージ
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to book_path(@book.id)
     else
       render :new
     end
